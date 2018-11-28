@@ -45,7 +45,7 @@
 
 
   <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; 
-   window.myWidgetParam.push({id: 15,cityid: '2643743',appid: '{{OpenWeatherMap_API_KEY}}' ,units: 'metric',containerid: 'openweathermap-widget-15',  });
+   window.myWidgetParam.push({id: 17,q: '{{location}}',appid: '{{OpenWeatherMap_API_KEY}}' ,units: 'metric',containerid: 'openweathermap-widget-15',  });
      (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";
      script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
      var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
@@ -76,15 +76,20 @@
   </div>
 </nav>
 <div class="jumbotron">
-    <div class="container text-center">
-      <h3>Let's have some fun!</h3>      
+    <div class="container-fluid">
+        {% for item in all_places_display_name %}
+           <span class="label label-default"  style=" font-size: 9pt" onMouseOver="this.style.color='#0F0'"   onMouseOut="this.style.color='#FFF'">{{item}}</span>
+        {% endfor %}
+        
+      
+      <!-- <h3>Let's have some fun!</h3>      
       {% if location %}
       <p>It looks like you are in {{location}}!</p>
   
     {% else %}
       <p>Please select a location!</p>
   
-    {% endif %}
+    {% endif %} -->
 
     
     </div>
@@ -104,6 +109,36 @@
       <hr>
       <h3>Test</h3>
       <p>Lorem ipsum...</p>
+
+      <div class = "row">
+   
+        <div class = "col-sm-6 col-md-3">
+           <div class = "thumbnail">
+              <img src = "/static/images/marlay-park.jpg" alt = "Outdoor">
+           </div>
+           
+           <div class = "caption">
+              <h3>Outdoor</h3>
+              
+            
+           </div>
+        </div>
+        
+        <div class = "col-sm-6 col-md-3">
+           <div class = "thumbnail">
+              <img src = "/static/images/Indoor.jpg" alt = "indoor">
+           </div>
+           
+           <div class = "caption">
+              <h3>Indoor</h3>
+             
+            
+           </div>
+        </div>
+        
+        
+        
+     </div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
