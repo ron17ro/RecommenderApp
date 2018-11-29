@@ -44,13 +44,13 @@
 <body>
 
 
-  <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; 
-   window.myWidgetParam.push({id: 17,cityid: '{{2964574}}',appid: '{{OpenWeatherMap_API_KEY}}' ,units: 'metric',containerid: 'openweathermap-widget-17',  });
-     (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";
-     script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-     var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+  <!-- <script type="text/javascript" src="/static/js/openweathermaps_currentday_widget"> </script> -->
 
-    
+    <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = []; 
+		window.myWidgetParam.push({id: 17,cityid: '{{2964574}}',appid: '{{OpenWeatherMap_API_KEY}}' ,units: 'metric',containerid: 'openweathermap-widget-17',  });
+		  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";
+		  script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+		  var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -77,8 +77,8 @@
 </nav>
 <div class="jumbotron">
     <div class="container-fluid">
-        {% for item in all_places_display_name %}
-           <span class="label label-default"  style=" font-size: 9pt" onMouseOver="this.style.color='#0F0'"   onMouseOut="this.style.color='#FFF'">{{item}}</span>
+        {% for key,value in all_places_names.items()%}
+           <a href="/{{key}}" class="btn btn-info" role="button" >{{value}}</a>
         {% endfor %}
    
     </div>
@@ -95,10 +95,10 @@
     {% block content %}{% endblock %}
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <p>ADS</p>
+        <p>Trending Twitter feeds for {{location}}</p>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <p>List of feeds</p>
       </div>
     </div>
   </div>
