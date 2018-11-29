@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="col-sm-8 text-left"> 
+        <h1>Welcome</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <hr>
+        <h3>Test</h3>
+        <p>Lorem ipsum...</p>
+  
+        <div class = "row">
+          {%for place in all_places%}
+          <div class = "col-sm-6 col-md-3">
+			  <!-- place image -->
+			  <div class = "thumbnail">
+				  {%if place[3] != 'empty' %}
+					<img src = "https://maps.googleapis.com/maps/api/place/photo?maxheight=800&photoreference={{place[3]}}&key={{Google_API_KEY}}">
+				  {%else%}
+					  <img src = "/static/images/placeholder.png">
+				{%endif%}
+			  </div>
+				 
+             <div class = "caption">
+                <h5>{{place[0]}}</h5>
+              
+             </div>
+             <!-- address -->
+             <div class="caption">
+                  <h5>Address: {{place[1]}}</h5>  
+             </div>
+             <!-- program -->
+             <!-- <div class="content">
+                <h3>Program: {{place_program}}</h3>
+             </div> -->
+			 <!-- website -->
+			 {%if place[2] != 'empty'%}
+             <div class="caption">				 	
+                    <h5>Website: <a>{{place[2]}}</a></h5>
+			 </div>
+
+			 {%endif%}
+		  </div>
+		  {%endfor%}
+          
+       </div>
+      </div>
+
+{% endblock %}
