@@ -16,9 +16,8 @@ def disply_places_by_selected_type(place_type):
 	# print(get_nearby_places(my_coordinates(), 'park', ''))
 	# print('Debug - Hello')
 	# print()
-	print('Hi')
-	nearby_places = get_nearby_places(my_coordinates(), 'park', '')
-	return render_template("places_by_category.html", location = my_city(), all_places = nearby_places,
+	nearby_places = get_nearby_places(my_coordinates(), place_type, '')
+	return render_template("places_by_category.html", location = my_city(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places = nearby_places,
 		all_places_names = all_places_names, Google_API_KEY=KEYS['google_API'])
 
 

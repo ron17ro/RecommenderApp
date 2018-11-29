@@ -193,11 +193,11 @@ all_places = [
 	'veterinary_care',
 	'zoo']
 
-total_results = []
+
 
 
 def get_nearby_places(coordinates, place_type, next_page):
-	
+	total_results = []
 	URL = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
             + coordinates+'&radius=1000&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
 
@@ -225,7 +225,7 @@ def get_nearby_places(coordinates, place_type, next_page):
 			if place_address_website_image[0][0][2]:
 				place_image = place_address_website_image[0][0][2]
 			else:
-				place_image ='/static/images/indoor.jpg'
+				place_image ='empty'
 			total_results.append([place_name, place_address, place_website, place_image])
 	# try:
 	# 	next_page_token = python_object['next_page_token']
@@ -235,7 +235,7 @@ def get_nearby_places(coordinates, place_type, next_page):
 	# 	return
 	# time.sleep(1)
 	# get_nearby_places(coordinates, place_type, next_page_token)
-	print('What is this'+str(total_results))
+	# print('What is this'+str(total_results))
 	return total_results
 
 
@@ -250,32 +250,26 @@ def get_place_image_address_website(place_id):
 	try:
 		place_details = python_object["result"]
 
-
+		#get website
 		if 'website' in place_details  and place_details['website'] is not None:
 			place_website = place_details['website']
-			# print(place_website)
 		else:
 			place_website = 'empty'
 
 		# get photo ref
 		if 'photos' in place_details:
 			place_image = place_details['photos'][0]['photo_reference']
-			# print(place_image)
 		else:
-			place_image = 'static/images/indoor.jpg'
+			place_image = 'empty'
 
 		# get place address
 		if 'formatted_address' in place_details and place_details['formatted_address'] is not None:
 			place_address = place_details['formatted_address']
-			# print(place_address)
 		elif 'adr_address' in place_details and  place_details['adr_address'] is not None:
 			place_address = place_details['adr_address']
-			# print(place_address)
 		else:
 			place_address = 'empty'
-
 		place_attr.append([place_address, place_website, place_image])
-		# print(place_attr)
 		return place_attr
 	except:
 		# place_attr.append(['empty', 'empty', 'static/images/indoor.jpg'])
