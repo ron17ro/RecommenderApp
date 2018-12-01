@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from location import *
 from places import *
 from settings import KEYS
+from weather import *
 
 
 app = Flask('MyApp')
@@ -9,7 +10,7 @@ app = Flask('MyApp')
 @app.route('/')
 def display_location():
     
-    return render_template("IOCategories.html", location = my_city(), OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names)
+    return render_template("IOCategories.html", location = my_city(), cityId=city_id(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names)
 
 @app.route('/<place_type>')
 def disply_places_by_selected_type(place_type):
