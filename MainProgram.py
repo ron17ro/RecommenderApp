@@ -18,9 +18,16 @@ def disply_places_by_selected_type(place_type):
 	# print('Debug - Hello')
 	# print()
 	nearby_places = get_nearby_places(my_coordinates(), place_type, '')
-	return render_template("places_by_category.html", location = my_city(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places = nearby_places,
+	return render_template("places_by_category.html", location = my_city(),cityId=city_id(), OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places = nearby_places,
 		all_places_names = all_places_names, Google_API_KEY=KEYS['google_API'])
 
+
+@app.route("/contact", methods=['POST','GET'])
+def contact():
+    if request.method == 'POST':
+        return render_template("IOCategories.html", location = my_city(), cityId=city_id(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names)
+    else:
+        return render_template("contact.html", location = my_city(), cityId=city_id(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names)
 
 if __name__ == '__main__':
     app.run(debug=True)
