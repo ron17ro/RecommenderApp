@@ -22,6 +22,14 @@ def disply_places_by_selected_type(place_type):
 		all_places_names = all_places_names, Google_API_KEY=KEYS['google_API'],cityId = city_id())
 
 
+@app.route("/contact", methods=['POST','GET'])
+def contact():
+    if request.method == 'POST':
+        return render_template("IOCategories.html", location = my_city(), cityId=city_id(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names)
+    else:
+        return render_template("contact.html", location = my_city(), cityId=city_id(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names)
+
+
 @app.route('/<suggestions>')
 def display_outdoor_places():
 	if getWeather() == 'sunny':
