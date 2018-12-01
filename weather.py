@@ -10,12 +10,17 @@ from location import *
 #importing the key
 owm = pyowm.OWM(KEYS['OpenWeatherMap'])
 
-#search for weather information based on browser's location
-observation = owm.weather_at_place(my_city())
-w = observation.get_weather()
+try:
+    #search for weather information based on browser's location
+    observation = owm.weather_at_place(my_city())
+    w = observation.get_weather()
 
-#get the weather status
-status = w.get_status()
+    #get the weather status
+    status = w.get_status()
+except:
+    observation = owm.weather_at_place(my_city())
+    w = observation.get_weather()
+    status = w.get_status()
 
 # lists of weather conditions for sunny and rainy
 sunny = ["Clear", "Clouds"]
