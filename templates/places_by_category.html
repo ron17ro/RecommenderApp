@@ -14,7 +14,7 @@
 			  <!-- place image -->
 			  <div class = "thumbnail">
 				  {%if place[3] != 'empty' %}
-					<img src = "https://maps.googleapis.com/maps/api/place/photo?maxheight=800&photoreference={{place[3]}}&key={{Google_API_KEY}}">
+					<img src = "https://maps.googleapis.com/maps/api/place/photo?maxheight=400&photoreference={{place[3]}}&key={{Google_API_KEY}}">
 				  {%else%}
 					  <img src = "/static/images/placeholder.png">
 				{%endif%}

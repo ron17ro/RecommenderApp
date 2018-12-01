@@ -34,7 +34,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
+		<li class="active"><a href="/">Home</a></li>
+		<li class="active"><a href="/suggestions">Suggestions</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
 
@@ -44,7 +45,7 @@
 <div class="jumbotron">
     <div class="container-fluid">
         {% for key,value in all_places_names.items()%}
-           <a href="/{{key}}" class="btn btn-info" role="button" >{{value}}</a>
+           <a href="/{{key}}" class="btn btn-info" role="button" style="margin:3px" >{{value}}</a>
         {% endfor %}
    
     </div>

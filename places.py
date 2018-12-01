@@ -101,6 +101,32 @@ all_places_names = dict([
 	('zoo', 'zoo')
 ])
 
+outdoor_categories = dict([
+	('amusement_park', 'amusement park'),
+	('campground', 'campground'),
+	('park', 'park'),
+	('stadium', 'stadium'),
+	('travel_agency', 'travel agency'),
+	('zoo', 'zoo')
+])
+
+indoor_categories = dict([
+	('aquarium', 'aquarium'),
+	('art_gallery', 'art galery'),
+	('beauty_salon', 'beauty salon'),
+	('bicycle_store', 'bicycle store'),
+	('book_store', 'book store'),
+	('bowling_alley', 'bowling alley'),
+	('cafe', 'cafe'),
+	('gym', 'gym'),
+	('movie_theater', 'movie theater'),
+	('museum', 'museum'),
+	('restaurant', 'restaurant'),
+	('spa', 'spa'),
+	('store', 'store'),
+	('supermarket', 'supermarket')
+])
+
 all_places = [
 	'accounting',
 	'airport',
@@ -199,9 +225,7 @@ all_places = [
 def get_nearby_places(coordinates, place_type, next_page):
 	total_results = []
 	URL = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-            + coordinates+'&radius=1000&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
-
-	print(URL)
+            + coordinates+'&radius=700&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
 
 	r = requests.get(URL)
 	response = r.text
@@ -212,7 +236,6 @@ def get_nearby_places(coordinates, place_type, next_page):
 		place_id = result['place_id']
 		place_address_website_image=[]
 		place_address_website_image.append(get_place_image_address_website(place_id))
-		# print(place_name, place_address_website_image)
 		if place_name is not None and place_address_website_image is not None:
 			if place_address_website_image[0][0][0] is not None:
 				place_address = place_address_website_image[0][0][0]
@@ -226,7 +249,7 @@ def get_nearby_places(coordinates, place_type, next_page):
 				place_image = place_address_website_image[0][0][2]
 			else:
 				place_image ='empty'
-			total_results.append([place_name, place_address, place_website, place_image])
+			total_results.append([place_name, place_address, place_website, place_image, place_type])
 	# try:
 	# 	next_page_token = python_object['next_page_token']
 	# except KeyError:
@@ -272,9 +295,25 @@ def get_place_image_address_website(place_id):
 		place_attr.append([place_address, place_website, place_image])
 		return place_attr
 	except:
-		# place_attr.append(['empty', 'empty', 'static/images/indoor.jpg'])
 		print("err getting place details")
 
+def get_outdoor_places(coordinates):
+	outdoor_places = []
+
+	for outdoor_category in outdoor_categories.keys():
+		places_by_category = get_nearby_places(coordinates, outdoor_category, '')
+		outdoor_places.append(places_by_category)
+
+	return outdoor_places
+
+def get_indoor_places(coordinates):
+	indoor_places = []
+	
+	for indoor_categories in indoor_categories.keys():
+		places_by_category = get_nearby_places(coordinates, indoor_categories, '')
+		indoor_places.append(places_by_category)
+
+	return indoor_places
 
 # get_nearby_places(my_coordinates(), 'park', '')
 
