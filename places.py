@@ -241,41 +241,40 @@ def get_nearby_places(coordinates, place_type, next_page):
 				+ coordinates+'&radius=700&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
 		r = requests.get(URL)
 
+		response = r.text
+		python_object = json.loads(response)
+		results = python_object['results']
+		for result in results:
+			place_name = result['name']
+			place_id = result['place_id']
+			place_address_website_image=[]
+			place_address_website_image.append(get_place_image_address_website(place_id))
+			if place_name is not None and place_address_website_image is not None:
+				if place_address_website_image[0][0][0] is not None:
+					place_address = place_address_website_image[0][0][0]
+				else:
+					place_address ='empty'
+				if place_address_website_image[0][0][1] is not None:
+					place_website = place_address_website_image[0][0][1]
+				else:
+					place_website = 'empty'
+				if place_address_website_image[0][0][2] is not None:
+					place_image = place_address_website_image[0][0][2]
+				else:
+					place_image ='empty'
+				if place_address_website_image[0][0][3] is not None:
+					place_opening_hours = place_address_website_image[0][0][3]
+				else:
+					place_opening_hours = 'empty'
+				if place_address_website_image[0][0][4] is not None:
+					place_program = place_address_website_image[0][0][4]
+				else:
+					place_program = ' empty'
+
+				total_results.append([place_name, place_address, place_website, place_image, place_opening_hours, place_program, place_type])
 	except:
 		print("error trying to search palces")
 		return 
-
-	response = r.text
-	python_object = json.loads(response)
-	results = python_object['results']
-	for result in results:
-		place_name = result['name']
-		place_id = result['place_id']
-		place_address_website_image=[]
-		place_address_website_image.append(get_place_image_address_website(place_id))
-		if place_name is not None and place_address_website_image is not None:
-			if place_address_website_image[0][0][0] is not None:
-				place_address = place_address_website_image[0][0][0]
-			else:
-				place_address ='empty'
-			if place_address_website_image[0][0][1] is not None:
-				place_website = place_address_website_image[0][0][1]
-			else:
-				place_website = 'empty'
-			if place_address_website_image[0][0][2] is not None:
-				place_image = place_address_website_image[0][0][2]
-			else:
-				place_image ='empty'
-			if place_address_website_image[0][0][3] is not None:
-				place_opening_hours = place_address_website_image[0][0][3]
-			else:
-				place_opening_hours = 'empty'
-			if place_address_website_image[0][0][4] is not None:
-				place_program = place_address_website_image[0][0][4]
-			else:
-				place_program = ' empty'
-
-			total_results.append([place_name, place_address, place_website, place_image, place_opening_hours, place_program, place_type])
 	# try:
 	# 	next_page_token = python_object['next_page_token']
 	# except KeyError:
@@ -294,14 +293,13 @@ def get_place_image_address_website(place_id):
 		reqURL = ('https://maps.googleapis.com/maps/api/place/details/json?placeid='
 			+ place_id+'&key='+api_key)
 		r = requests.get(reqURL)
-	except:
-		print('error trying to request place details')
+	
 
-	response = r.text
-	python_object = json.loads(response)
-	# place_image = []
-	place_attr = []
-	try:
+		response = r.text
+		python_object = json.loads(response)
+		# place_image = []
+		place_attr = []
+		
 		place_details = python_object["result"]
 		# get photo ref
 		if 'photos' in place_details:
@@ -342,23 +340,31 @@ def get_place_image_address_website(place_id):
 		return place_attr
 	except:
 		print("err getting place details")
+		return
 
 def get_outdoor_places(coordinates):
 	outdoor_places = []
-
-	for outdoor_category in outdoor_categories.keys():
-		places_by_category = get_nearby_places(coordinates, outdoor_category, '')
-		outdoor_places.append(places_by_category)
+	try:
+		for outdoor_category in outdoor_categories.keys():
+			places_by_category = get_nearby_places(coordinates, outdoor_category, '')
+			outdoor_places.append(places_by_category)
+	except:
+		print("cannot get outdoor places")
+		return
 
 	return outdoor_places
 
 def get_indoor_places(coordinates):
 	indoor_places = []
 
-	for indoor_categories in indoor_categories.keys():
-		places_by_category = get_nearby_places(coordinates, indoor_categories, '')
-		indoor_places.append(places_by_category)
-
+	try:
+		for indoor_categories in indoor_categories.keys():
+			places_by_category = get_nearby_places(coordinates, indoor_categories, '')
+			indoor_places.append(places_by_category)
+	except:
+		print("cannot get indoor places")
+		return
+		
 	return indoor_places
 
 # get_nearby_places(my_coordinates(), 'park', '')
