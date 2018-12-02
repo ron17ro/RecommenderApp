@@ -41,7 +41,7 @@ def getWeather():
 		status = w.get_status()
 
 	# lists of weather conditions for sunny and rainy
-	sunny = ["Clear", "Clouds"]
+	sunny = ["Clear", "Clouds","broken clouds"]
 	rainy = ["Thunderstorm", "Drizzle", "Rain", "Snow"]
 
 	if status in sunny:

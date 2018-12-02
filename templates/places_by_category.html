@@ -1,48 +1,83 @@
 {% extends "index.html" %}
 {% block content %}
 
-<div class="col-sm-8 text-left"> 
-        <h1>Welcome</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <hr>
-        <h3>Test</h3>
-        <p>Lorem ipsum...</p>
-  
-        <div class = "row">
-          {%for place in all_places%}
-          <div class = "col-sm-6 col-md-3">
-			  <!-- place image -->
-			  <div class = "thumbnail">
-				  {%if place[3] != 'empty' %}
-					<img src = "https://maps.googleapis.com/maps/api/place/photo?maxheight=400&photoreference={{place[3]}}&key={{Google_API_KEY}}">
-				  {%else%}
-					  <img src = "/static/images/placeholder.png">
-				{%endif%}
-			  </div>
-				 
-             <div class = "caption">
-                <h5>{{place[0]}}</h5>
-              
-             </div>
-             <!-- address -->
-             <div class="caption">
-                  <h5>Address: {{place[1]}}</h5>  
-             </div>
-             <!-- program -->
-             <!-- <div class="content">
-                <h3>Program: {{place_program}}</h3>
-             </div> -->
-			 <!-- website -->
-			 {%if place[2] != 'empty'%}
-             <div class="caption">				 	
-                    <h5>Website: <a>{{place[2]}}</a></h5>
-			 </div>
+<div class="col-sm-8 text-left">
+	<h1>{%if weather =='sunny'%}
+		Weather looks good. Let's do something outside!
+		{%else%}
+		It doesn't look so nice outside. Let's stay indoor today!
+		{%endif%}
+	</h1>
+	<hr>
 
-			 {%endif%}
-		  </div>
-		  {%endfor%}
-          
-       </div>
-      </div>
+
+	<div class="row" style=" display: flex; flex-wrap: wrap;">
+
+		{%for place in all_places%}
+		<!-- ignore places with no images -->
+		{%if place[3] != 'empty'%}
+
+		<div class="col-lg-2 col-md-3 col-sm-6 hover1" style="margin: 1px;border-style:solid;border-color: gray; border-width:0.3px;padding: 3x; display: flex;
+		flex-direction: column;	text-decoration: none;	position: relative;">
+
+			<!-- place image -->
+			<div class="thumbnail">
+				{%if place[3] != 'empty' %}
+				<img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=400&photoreference={{place[3]}}&key={{Google_API_KEY}}">
+				{%else%}
+				<img src="/static/images/placeholder.png">
+				{%endif%}
+			</div>
+
+			<!-- place by category -->
+			<div class="caption">
+				<h5>{{place[0]}}</h5>
+
+			</div>
+
+			<!-- address -->
+			<div class="caption">
+				<h5>Address: </h5>
+				<p style="font-size: 11px">{{place[1]}}</p>
+			</div>
+
+			<!-- website -->
+			{%if place[2] != 'empty'%}
+			<div class="caption">
+				<h5><a href='{{place[2]}}'>Website</a></h5>
+			</div>
+			{%endif%}
+
+			<!-- open now -->
+			<div class="caption">
+				{%if place[4] != 'empty'%}
+				{%if place[4] == 'True'%}
+				<h5>Open now</h5>
+				{%else%}
+				<h5>Closed now!</h5>
+				{%endif%}
+				{%endif%}
+			</div>
+
+			<!-- program -->
+			<div class="caption">
+				{%if place[5] != 'empty'%}
+				<h5>Program:</h5>
+				{%for p in place[5]%}
+				<p style="font-size: 11px">{{p}}</p>
+				{%endfor%}
+				{%endif%}
+			</div>
+
+
+		</div>
+
+
+		{%endif%}
+		{%endfor%}
+
+	</div>
+</div>
+
 
 {% endblock %}

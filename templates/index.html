@@ -44,8 +44,9 @@
 </nav>
 <div class="jumbotron">
     <div class="container-fluid">
+		<h2 style ="text-align: center;font-family: serif">You are in {{location}}!</h2>
         {% for key,value in all_places_names.items()%}
-           <a href="/{{key}}" class="btn btn-info" role="button" style="margin:3px" >{{value}}</a>
+           <a href="/{{key}}" class="btn btn-info" role="button" style="margin:2px; font-size: 10px;" >{{value}}</a>
         {% endfor %}
    
     </div>
@@ -59,12 +60,7 @@
     </div>
     {% block content %}{% endblock %}
     <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>Trending Twitter feeds for {{location}}</p>
-      </div>
-      <div class="well">
-        <p>List of feeds</p>
-      </div>
+
     </div>
   </div>
 </div>
