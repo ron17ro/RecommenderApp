@@ -1,3 +1,4 @@
 flask
 pyowm
 requests
+gunicorn
