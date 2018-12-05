@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+<div class="container-fluid">
 
   <!-- <script type="text/javascript" src="/static/js/openweathermaps_currentday_widget"> </script> -->
 
@@ -43,7 +43,10 @@
   </div>
 </nav>
 <div class="jumbotron">
-    <div class="container-fluid">
+<h2 class="title">Weather Recommendation App</h2>
+<h3 class="title">It looks like you are in {{location}}!</h3>
+    <div class="container-fluid" id="places-list">
+
 		<h2 style ="text-align: center;font-family: serif">You are in {{location}}!</h2>
         {% for key,value in all_places_names.items()%}
            <a href="/{{key}}" class="btn btn-info" role="button" style="margin:2px; font-size: 10px;" >{{value}}</a>
@@ -66,9 +69,10 @@
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>Weather Recommendation App</p>
 </footer>
 
+</div>
 </body>
 
 </html>

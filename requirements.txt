@@ -1,0 +1,4 @@
+flask
+pyowm
+requests
+gunicorn

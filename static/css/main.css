@@ -29,4 +29,45 @@
       }
       .row.content {height:auto;}
 	}
-	
+
+    #places-list{
+        display: none;
+    }
+
+    body{
+        height: 100%;
+    }
+
+    .columnImg{
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+
+    .title{
+        text-align: center;
+    }
+
+    /*Responsive widget*/
+
+    .widget-right.widget-right--type3.widget-right--brown{
+        width: 100%;
+    }
+    .weather-right.weather-right--brown.weather-right--type3{
+        width: 100%;
+    }
+    .weather-right__layout{
+        width: 100%;
+    }
+
+    .weather-right__temperature{
+        width: 50%;
+        margin: 0 auto;
+    }
+    /* responsive images for small screens*/
+    @media screen and (max-width: 500px) {
+    .columnImg {
+        width: 100%;
+    }
+    }

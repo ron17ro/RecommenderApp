@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from location import *
 from places import *
-from settings import KEYS
+from settings import *
 from weather import *
 # from emailProgram import *
 
@@ -32,9 +32,9 @@ def contact():
         message = form_data["message"]
         requests.post("https://api.mailgun.net/v3/sandbox92fcbfc429d24161a806e60bc92f3306.mailgun.org/messages",
                       auth=("api", KEYS['mailGun']), data={"from": "My Weather App <weatherapp@mydit.ie>",
-                                                           "to": "Uriell C <d17124792@mydit.ie>",
+                                                           "to": Email['CommentEmail'],
                                                            "subject": "New Comment on Weather App",
-                                                           "text": name + "\n" + receiver_address + "\n" + message})
+                                                           "text": "Name: " + name + "\n" + "Email addres: "+ receiver_address + "\n" + "Message: "+ message})
         return render_template("IOCategories.html", location=my_city(), cityId=city_id(),
                                OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names)
     else:
