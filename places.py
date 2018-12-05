@@ -2,7 +2,7 @@
 import requests
 import json
 import time
-from settings import KEYS
+from keys import KEYS
 from location import *
 
 api_key = KEYS['google_API']

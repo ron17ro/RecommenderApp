@@ -3,7 +3,7 @@ import pyowm  # importing the pyowm library
 from urllib.request import urlopen
 import json
 import time
-from settings import KEYS
+from keys import KEYS
 from location import *
 
 
