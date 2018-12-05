@@ -30,9 +30,9 @@
       .row.content {height:auto;}
 	}
 
-    #places-list{
+    /* #places-list{
         display: none;
-    }
+    } */
 
     body{
         height: 100%;

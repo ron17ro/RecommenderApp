@@ -43,11 +43,9 @@
   </div>
 </nav>
 <div class="jumbotron">
-<h2 class="title">Weather Recommendation App</h2>
-<h3 class="title">It looks like you are in {{location}}!</h3>
-    <div class="container-fluid" id="places-list">
-
-		<h2 style ="text-align: center;font-family: serif">You are in {{location}}!</h2>
+<h4 class="title">Weather Recommendation App</h2>
+<h5 style ="text-align: center;font-family: serif">You are in {{location}}!</h2>
+    <div class="container-fluid">
         {% for key,value in all_places_names.items()%}
            <a href="/{{key}}" class="btn btn-info" role="button" style="margin:2px; font-size: 10px;" >{{value}}</a>
         {% endfor %}
