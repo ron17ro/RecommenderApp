@@ -2,3 +2,4 @@ flask
 pyowm
 requests
 gunicorn
+boto
