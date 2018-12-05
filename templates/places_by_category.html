@@ -2,12 +2,19 @@
 {% block content %}
 
 <div class="col-sm-8 text-left">
-	<h1>{%if weather =='sunny'%}
-		Weather looks good. Let's do something outside!
-		{%else%}
-		It doesn't look so nice outside. Let's stay indoor today!
-		{%endif%}
-	</h1>
+
+	{%if 'suggestions' in suggestions%}
+		<h1>{%if weather =='sunny'%}
+			Weather looks good. Let's do something outside!
+			{%else%}
+			It doesn't look so nice outside. Let's stay indoor today!
+			{%endif%}
+		</h1>
+	{%else%}
+		<h1>You selected {{all_places_names['place_type']}}</h1>
+	{%endif%}
+
+
 	<hr>
 
 
@@ -71,7 +78,6 @@
 
 
 		</div>
-
 
 		{%endif%}
 		{%endfor%}

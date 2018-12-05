@@ -20,7 +20,7 @@ def disply_places_by_selected_type(place_type):
     # print()
     nearby_places = get_nearby_places(my_coordinates(), place_type, '')
     return render_template("places_by_category.html", location = my_city(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places = nearby_places,
-        all_places_names = all_places_names, Google_API_KEY=KEYS['google_API'],cityId = city_id())
+        all_places_names = all_places_names, Google_API_KEY=KEYS['google_API'],cityId = city_id(), place_type=place_type.title())
 
 
 @app.route("/contact", methods=['POST', 'GET'])
@@ -51,7 +51,7 @@ def display_outdoor_places():
         places = get_indoor_places(my_coordinates)
 
     return render_template("places_by_category.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places=places,
-                           all_places_names=all_places_names, Google_API_KEY=KEYS['google_API'], cityId=city_id(), weather=getWeather())
+                           all_places_names=all_places_names, Google_API_KEY=KEYS['google_API'], cityId=city_id(), weather=getWeather(), suggestions = suggestions.title())
 
 
 if __name__ == '__main__':
