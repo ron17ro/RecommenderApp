@@ -1,1 +1,1 @@
-web: gunicorn MainProgram
+web: gunicorn MainProgram:display_location
