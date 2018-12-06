@@ -7,7 +7,7 @@ from weather import *
 # from emailProgram import *
 
 
-app = Flask('MyApp')
+app = Flask('Weather Recommendation App')
 
 
 @app.route('/')
