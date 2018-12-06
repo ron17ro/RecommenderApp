@@ -45,9 +45,11 @@ def my_location():
 
 def my_city():
     print('Your city: {0}'.format(city))
-    return city
+    # return city
+    return 'Dublin'
 
 
 def my_coordinates():
     print('Your coordinates: {0}'.format(loc))
-    return loc
+    # return loc
+    return '53.3331,-6.2489'
