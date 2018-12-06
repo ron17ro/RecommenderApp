@@ -57,7 +57,7 @@ def contact():
         receiver_address = form_data["email"]
         message = form_data["message"]
         requests.post("https://api.mailgun.net/v3/sandbox92fcbfc429d24161a806e60bc92f3306.mailgun.org/messages",
-                      auth=("api", KEYS['mailGun']), data={"from": "My Weather App <weatherapp@mydit.ie>",
+                      auth=("api", KEYS['mailGun']), data={"from": "My Weather App <weatherapp@gmail.com>",
                                                            "to": KEYS['CommentEmail'],
                                                            "subject": "New Comment on Weather App",
                                                            "text": "Name: " + name + "\n" + "Email addres: " + receiver_address + "\n" + "Message: " + message})
