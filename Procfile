@@ -1,1 +1,1 @@
-web: gunicorn MainProgram:MainProgram
+web: gunicorn MainProgram
