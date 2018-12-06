@@ -4,6 +4,7 @@ from urllib.request import urlopen
 import json
 import time
 from keys import KEYS
+# from settings import KEYS
 from location import *
 
 

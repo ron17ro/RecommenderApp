@@ -2,26 +2,51 @@ from flask import Flask, render_template, request
 from location import *
 from places import *
 from keys import *
+# from settings import KEYS
 from weather import *
+from flask import jsonify
 
 # from emailProgram import *
 
 
 app = Flask('Weather Recommendation App')
 
+ip = ''
+loc = ''
 
-@app.route('/')
+
+@app.route('/', methods=["POST", "GET"])
 def display_location():
-    return render_template("IOCategories.html", location = my_city(), OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places_names = all_places_names, cityId = city_id())
+    if request.method == 'POST':
+        try:
+            data = request.get_json()
+            if data != None:
+                ip = data['ip']
+                loc = data['loc']
+                print(ip)
+                location = getGeolocationByIp(ip)
+                print(location)
+            else:
+                ip = str('109.255.96.7')
+                loc = str('53.3331, -6.2489')
+                print(ip, loc)
+
+        except:
+            print("cannot get json")
+    return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
+
 
 @app.route('/<place_type>')
-def disply_places_by_selected_type(place_type):
+def display_places_by_selected_type(place_type):
     # print(get_nearby_places(my_coordinates(), 'park', ''))
     # print('Debug - Hello')
     # print()
-    nearby_places = get_nearby_places(my_coordinates(), place_type, '')
-    return render_template("places_by_category.html", location = my_city(),OpenWeatherMap_API_KEY = KEYS['OpenWeatherMap'], all_places = nearby_places,
-        all_places_names = all_places_names, Google_API_KEY=KEYS['google_API'],cityId = city_id(), place_type=place_type.title())
+    # print(place_type.title())
+    # nearby_places = get_nearby_places(my_coordinates(), place_type, '')
+
+	nearby_places = get_nearby_places(my_coordinates(), place_type, '')
+	return render_template("places_by_category.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places=nearby_places,
+							all_places_names=all_places_names, Google_API_KEY=KEYS['google_API'], cityId=city_id(), place_type=place_type.title(), selected_place_category=all_places_names[place_type])
 
 
 @app.route("/contact", methods=['POST', 'GET'])
@@ -35,7 +60,7 @@ def contact():
                       auth=("api", KEYS['mailGun']), data={"from": "My Weather App <weatherapp@mydit.ie>",
                                                            "to": KEYS['CommentEmail'],
                                                            "subject": "New Comment on Weather App",
-                                                           "text": "Name: " + name + "\n" + "Email addres: "+ receiver_address + "\n" + "Message: "+ message})
+                                                           "text": "Name: " + name + "\n" + "Email addres: " + receiver_address + "\n" + "Message: " + message})
         return render_template("IOCategories.html", location=my_city(), cityId=city_id(),
                                OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names)
     else:
@@ -43,16 +68,17 @@ def contact():
                                OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names)
 
 
-
-@app.route('/<suggestions>')
+@app.route('/suggestions')
 def display_outdoor_places():
-    if getWeather() == 'sunny':
-        places = get_outdoor_places(my_coordinates())
-    else:
-        places = get_indoor_places(my_coordinates)
+	# print(suggestions.title() + 'you are in suggestions')
+	if getWeather() == 'sunny':
+		places = get_outdoor_places(my_coordinates())
+	else:
+		places=get_indoor_places(my_coordinates())
 
-    return render_template("places_by_category.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places=places,
-                           all_places_names=all_places_names, Google_API_KEY=KEYS['google_API'], cityId=city_id(), weather=getWeather(), suggestions = suggestions.title())
+
+	return render_template("places_by_category.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places=places,
+                           all_places_names=all_places_names, Google_API_KEY=KEYS['google_API'], cityId=city_id(), weather=getWeather())
 
 
 if __name__ == '__main__':

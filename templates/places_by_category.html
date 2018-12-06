@@ -3,18 +3,25 @@
 
 <div class="col-sm-8 text-left">
 
-	{%if 'suggestions' in suggestions%}
-		<h1>{%if weather =='sunny'%}
+		{%if place_type%}
+			<h1>Your selection: "{{selected_place_category}}"</h1>
+			{%if all_places|length == 0 %}
+				<h5>No nearby places in this category.Pick something else!</h5>		
+			{%endif%}
+		{%endif%}
+
+		{%if request.path == '/suggestions'%}
+		<h1>
+			{%if weather =='sunny'%}
 			Weather looks good. Let's do something outside!
 			{%else%}
 			It doesn't look so nice outside. Let's stay indoor today!
 			{%endif%}
 		</h1>
-	{%else%}
-		<h1>You selected {{all_places_names['place_type']}}</h1>
-	{%endif%}
+		{%endif%}
 
 
+	 
 	<hr>
 
 
@@ -56,7 +63,7 @@
 			{%endif%}
 
 			<!-- open now -->
-			<div class="caption">
+			<!-- <div class="caption">
 				{%if place[4] != 'empty'%}
 				{%if place[4] == 'True'%}
 				<h5>Open now</h5>
@@ -64,7 +71,7 @@
 				<h5>Closed now!</h5>
 				{%endif%}
 				{%endif%}
-			</div>
+			</div> -->
 
 			<!-- program -->
 			<div class="caption">
