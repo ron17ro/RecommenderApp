@@ -52,4 +52,4 @@ def my_city():
 def my_coordinates():
     print('Your coordinates: {0}'.format(loc))
     # return loc
-    return '53.3331, -6.2489'
+    return '53.3331,-6.2489'
