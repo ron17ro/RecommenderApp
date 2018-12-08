@@ -18,8 +18,9 @@ loc = ''
 @app.route('/', methods=["POST", "GET"])
 def display_location():
 	try:
+		ip_request =jsonify({'ip': request.remote_addr})
 		ip = request.environ['REMOTE_ADDR']
-		print('IP ' + ip)
+		print('IP ' + ip + " full request " + ip_request)
 	except:
 		print('error getting the client ip')   
 	return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
