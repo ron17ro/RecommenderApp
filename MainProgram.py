@@ -22,7 +22,7 @@ def display_location():
 		ip = request.environ['REMOTE_ADDR']
 		print('IP ' + ip + " full request " + ip_request)
 	except Exception as e:
-		print('error getting the client ip ' + e.value)   
+		print('error getting the client ip ' + e)   
 	return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
 
 
