@@ -5,7 +5,7 @@ from keys import *
 # from settings import KEYS
 from weather import *
 from flask import jsonify
-
+import traceback
 # from emailProgram import *
 
 
@@ -21,8 +21,9 @@ def display_location():
 		ip_request =jsonify({'ip': request.remote_addr})
 		ip = request.environ['REMOTE_ADDR']
 		print('IP ' + ip + " full request " + ip_request)
-	except Exception as e:
-		print('error getting the client ip ' + e)   
+	except Exception:
+		print('error getting the client ip ')   
+		traceback.print_exc()
 	return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
 
 
