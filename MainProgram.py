@@ -21,25 +21,8 @@ def display_location():
 		ip = request.environ['REMOTE_ADDR']
 		print('IP ' + ip)
 	except:
-		print('error getting the client ip')
-    # if request.method == 'POST':
-    #     try:
-			
-    #         data = request.get_json()
-    #         if data != None:
-    #             ip = data['ip']
-    #             loc = data['loc']
-    #             print(ip)
-    #             location = getGeolocationByIp(ip)
-    #             print(location)
-    #         else:
-    #             ip = str('109.255.96.7')
-    #             loc = str('53.3331, -6.2489')
-    #             print(ip, loc)
-
-    #     except:
-    #         print("cannot get json")
-    return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
+		print('error getting the client ip')   
+	return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
 
 
 @app.route('/<place_type>')
