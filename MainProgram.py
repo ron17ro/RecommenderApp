@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 from location import *
 from places import *
-from keys import *
-# from settings import KEYS
+# from keys import *
+from settings import KEYS
 from weather import *
 from flask import jsonify
 
@@ -17,8 +17,14 @@ loc = ''
 
 @app.route('/', methods=["POST", "GET"])
 def display_location():
+	try:
+		ip = request.environ['REMOTE_ADDR']
+		print('IP ' + ip)
+	except:
+		print('error getting the client ip')
     # if request.method == 'POST':
     #     try:
+			
     #         data = request.get_json()
     #         if data != None:
     #             ip = data['ip']
