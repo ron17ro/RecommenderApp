@@ -20,7 +20,7 @@ def display_location():
 	try:
 		ip_request =jsonify({'ip': request.remote_addr})
 		ip = request.environ['REMOTE_ADDR']
-		print('IP ' + ip + " full request " + ip_request)
+		print('IP ' + ip + " full request " + str(ip_request.value))
 	except Exception:
 		print('error getting the client ip ')   
 		traceback.print_exc()
