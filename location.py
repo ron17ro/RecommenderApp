@@ -4,6 +4,7 @@ from urllib.request import urlopen
 from flask import jsonify
 import traceback
 from flask import request
+import time
 
 # try:
 #     url = 'http://ipinfo.io/json'
@@ -47,7 +48,8 @@ def getGeolocationByIp():
         ip = get_remote_addr()
         url = 'ipinfo.io/' + str(ip).strip("'") + '/geo'
         print(url)
-        response = urlopen(str(url).strip("'"))
+        response = urlopen(url)
+        time.sleep(1000)
         data = json.load(response)
         print('data' + str(data))
     except Exception:
