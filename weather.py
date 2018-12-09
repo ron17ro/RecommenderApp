@@ -16,7 +16,7 @@ try:
 	# setting up the endpoint for OWP
 	endpoint = "http://api.openweathermap.org/data/2.5/weather"
 	payload = {"q":  my_city(), "units": "metric",
-			"appid": "387c8ff8556cd0350850870394fcb533"}
+			"appid": KEYS['OpenWeatherMap']}
 	response = requests.get(endpoint, params=payload)
 	# parsing the data
 	weather_data = response.json()
