@@ -64,7 +64,7 @@ def city_id():
 	try:
 		w_data = weather_data["id"]
 	except Exception:
-		print('error getting the client ip ')
+		print('error getting the weather id ')
 		traceback.print_exc()
 	return weather_data["id"]
 
