@@ -4,33 +4,23 @@ from places import *
 from keys import *
 # from settings import KEYS
 from weather import *
-from flask import jsonify
-import traceback
+
 # from emailProgram import *
 
 
 app = Flask('Weather Recommendation App')
 
 
-def get_remote_addr():
-    address = request.headers.get('X-Forwarded-For', request.remote_addr)
-    if address is not None:
-        # An 'X-Forwarded-For' header includes a comma separated list of the
-        # addresses, the first address being the actual remote address.
-        address = address.encode('utf-8').split(b',')[0].strip()
-        ip = str(address)
-        print(ip[1:])
-    return ip[1:]
-
-
 @app.route('/', methods=["POST", "GET"])
 def display_location():
     try:
-        ip = get_remote_addr()
-        print('IP ' + ip )
+        data = getGeolocationByIp()
+		# ip = get_remote_addr()
+		# print('IP ' + ip )
     except Exception:
         print('error getting the client ip ')
         traceback.print_exc()
+
     return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
 
 
