@@ -11,7 +11,7 @@ from weather import *
 app = Flask('Weather Recommendation App')
 
 
-@app.route('/', methods=["POST", "GET"])
+@app.route('/')
 def display_location():
     try:
         data = getGeolocationByIp()
