@@ -46,7 +46,7 @@ def get_remote_addr():
 def getGeolocationByIp():
     try:
         ip = get_remote_addr()
-        url = 'ipinfo.io/' + str(ip).strip("'") + '/geo'
+        url = 'http://ipinfo.io/' + str(ip).strip("'") + '/geo'
         print(url)
         response = urlopen(url)
         time.sleep(1000)
