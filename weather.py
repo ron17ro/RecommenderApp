@@ -18,7 +18,7 @@ try:
 			"appid": "387c8ff8556cd0350850870394fcb533"}
 	response = requests.get(endpoint, params=payload)
 	# parsing the data
-	data = response.json()
+	weather_data = response.json()
 except:
 	print('cannot connect to openweathermaps')
 
@@ -60,6 +60,6 @@ def getWeather():
 
 # get the city id
 def city_id():
-    return data["id"]
+    return weather_data["id"]
 
 # getWeather()
