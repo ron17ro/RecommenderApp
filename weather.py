@@ -10,7 +10,7 @@ from location import *
 
 # importing the key
 owm = pyowm.OWM(KEYS['OpenWeatherMap'])
-weather_data={}
+
 
 try:
 	# setting up the endpoint for OWP
