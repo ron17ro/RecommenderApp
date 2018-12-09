@@ -62,7 +62,7 @@ def getWeather():
 # get the city id
 def city_id():
 	try:
-		w_data = weather_data["id"]
+		print(weather_data["id"])
 	except Exception:
 		print('error getting the weather id ')
 		traceback.print_exc()
