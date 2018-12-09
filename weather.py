@@ -4,7 +4,7 @@ from urllib.request import urlopen
 import json
 import time
 from keys import KEYS
-# from settings import KEYS
+#from settings import KEYS
 from location import *
 import traceback
 
@@ -67,6 +67,6 @@ def city_id():
 		print('error getting the weather id ')
 		traceback.print_exc()
 		return
-	return w_data
+	return weather_data["id"]
 
 # getWeather()
