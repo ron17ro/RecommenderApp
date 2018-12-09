@@ -47,7 +47,7 @@ def getGeolocationByIp():
         ip = get_remote_addr()
         url = 'ipinfo.io/' + str(ip).strip("'") + '/geo'
         print(url)
-        response = urlopen(url)
+        response = urlopen(str(url).strip("'"))
         data = json.load(response)
         print('data' + str(data))
     except Exception:
