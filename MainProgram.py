@@ -11,16 +11,20 @@ import traceback
 
 app = Flask('Weather Recommendation App')
 
-ip = ''
-loc = ''
-
+def get_remote_addr():
+    address = request.headers.get('X-Forwarded-For', request.remote_addr)
+    if address is not None:
+        # An 'X-Forwarded-For' header includes a comma separated list of the
+        # addresses, the first address being the actual remote address.
+        address = address.encode('utf-8').split(b',')[0].strip()
+    return address
 
 @app.route('/', methods=["POST", "GET"])
 def display_location():
 	try:
-		ip_request =jsonify({'ip': request.remote_addr})
+		ip_request =get_remote_addr()
 		ip = request.environ['REMOTE_ADDR']
-		print('IP ' + ip + " full request " + ip_request['fwd'])
+		print('IP ' + ip + " full request IP " + ip_request)
 	except Exception:
 		print('error getting the client ip ')   
 		traceback.print_exc()
