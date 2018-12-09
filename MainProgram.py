@@ -14,11 +14,11 @@ app = Flask('Weather Recommendation App')
 @app.route('/')
 def display_location():
 	# uncommet try/except on heroku
-    # try:
-    #     data = getGeolocationByIp()
-    # except Exception:
-    #     print('error getting the client ip ')
-    #     traceback.print_exc()
+    try:
+        data = getGeolocationByIp()
+    except Exception:
+        print('error getting the client ip ')
+        traceback.print_exc()
 
 
     return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
