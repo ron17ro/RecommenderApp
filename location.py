@@ -49,7 +49,7 @@ def getGeolocationByIp():
         url = 'http://ipinfo.io/' + str(ip).strip("'") + '/geo'
         print(url)
         response = urlopen(url)
-        time.sleep(1000)
+        # time.sleep(1000)
         data = json.load(response)
         print('data' + str(data))
     except Exception:
