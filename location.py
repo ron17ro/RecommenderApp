@@ -60,14 +60,15 @@ def getGeolocationByIp():
 
 
 def my_city():
-    print('Your city: {0}'.format(data['city']))
-    return data['city']
+	data = getGeolocationByIp()
+	print('Your city: {0}'.format(data['city']))
+	return data['city']
 
 
 def my_coordinates():
-    print('Your coordinates: {0}'.format(data['loc']))
-    # return loc
-    return data['loc']
+	data = getGeolocationByIp()
+	print('Your coordinates: {0}'.format(data['loc']))
+	return data['loc']
 
 # def my_location():
 #     print('Your IP detail\n ')
