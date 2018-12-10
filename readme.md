@@ -45,5 +45,7 @@ Future Features/Improvements
 Current issues
 --------------
 
-Due to Heroku's server location (US), the IP address found is located in the US (server's location) which is causing issues on the deployed app.
-To make the deployment successful, the location was hardcoded.
+We faced some issues deploying the app to Heroku. While the app is up and running in Heroku, the functionality to display the recommended places does not work expected.
+This functionality works well on a local environment and after spending some time troubleshooting the issue, we assume it might be a limitation of the API keys.
+Due to time constraints, we chose to leave it as it on Heroku for the moment.
+ 
