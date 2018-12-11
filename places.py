@@ -236,12 +236,13 @@ def get_nearby_places(coordinates, place_type, next_page):
 	try:
 
 		URL = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-				+ coordinates+'&radius=600&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
+				+ coordinates+'&radius=700&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
 		r = requests.get(URL)
-
+		
 		response = r.text
 		python_object = json.loads(response)
 		results = python_object['results']
+		print(results)
 		for result in results:
 			place_name = result['name']
 			place_id = result['place_id']
@@ -292,7 +293,7 @@ def get_place_image_address_website(place_id):
 			+ place_id+'&key='+api_key)
 		r = requests.get(reqURL)
 		
-
+		print(reqURL)
 		response = r.text
 		python_object = json.loads(response)
 		print(python_object)

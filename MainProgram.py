@@ -70,7 +70,7 @@ def contact():
 @app.route('/suggestions')
 def display_outdoor_places():
         # print(suggestions.title() + 'you are in suggestions')
-    if getWeather() == 'sunny':
+    if getWeather() =='outdoor':
         places = get_outdoor_places(my_coordinates())
     else:
         places = get_indoor_places(my_coordinates())
