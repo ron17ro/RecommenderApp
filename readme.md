@@ -32,14 +32,13 @@ Technologies used
 - The application can be set to work on local if the following:
 	- in location.py use the code block inside "#use this to test on local"  and comment the block specified by "# # use this on heroku to get the IP on the client(remote addr), if used to run the app on local it will return 127.0.0.1"
 	- in location.py, MainProgram.py, weather.py, places.py, the import section uses the line specified by "# use settings.py on local" and should comment the line specified by "# use keys.py on heroku"
-	- an additional settings.py is creating containing your API KEYS
+	- an additional settings.py is creating containing your API KEYS as following:
 	KEYS =dict([
 		('OpenWeatherMap', 'yourkey'),
 		('google_API', 'yourkey'),
 		('mailGun': 'yourKey'),
 		('CommentEmail':  'an email address where to send the feedback from the contact page')
-
-])
+	])
 
 
 Future Features/Improvements
