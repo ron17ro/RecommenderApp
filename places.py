@@ -346,6 +346,7 @@ def get_outdoor_places(coordinates):
 	outdoor_places = []
 	try:
 		for outdoor_category in outdoor_categories.keys():
+			print(outdoor_category)
 			outdoor_places.extend(get_nearby_places(coordinates, outdoor_category, ''))
 			# outdoor_places.append(places_by_category)
 	except:
