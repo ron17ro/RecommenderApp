@@ -13,18 +13,18 @@ import traceback
 # importing the key
 owm = pyowm.OWM(KEYS['OpenWeatherMap'])
 
-
-try:
-	# setting up the endpoint for OWP
-	endpoint = "http://api.openweathermap.org/data/2.5/weather"
-	payload = {"q":  my_city(), "units": "metric",
-			"appid": KEYS['OpenWeatherMap']}
-	response = requests.get(endpoint, params=payload)
-	# parsing the data
-	weather_data = response.json()
-except:
-	print('cannot connect to openweathermaps')
-
+def getOpenWeatherMapsResponse():
+	try:
+		# setting up the endpoint for OWP
+		endpoint = "http://api.openweathermap.org/data/2.5/weather"
+		payload = {"q":  my_city(), "units": "metric",
+				"appid": KEYS['OpenWeatherMap']}
+		response = requests.get(endpoint, params=payload)
+		# parsing the data
+		weather_data = response.json()
+	except:
+		print('cannot connect to openweathermaps')
+	return weather_data
 
 # compare status to weather conditions
 def getWeather():
@@ -64,6 +64,7 @@ def getWeather():
 # get the city id
 def city_id():
 	try:
+		weather_data=getOpenWeatherMapsResponse()
 		print(weather_data["id"])
 	except Exception:
 		print('error getting the weather id ')
