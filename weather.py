@@ -5,12 +5,16 @@ import json
 import time
 # use keys on heroku
 from keys import KEYS
+<<<<<<< HEAD
 # use keys on heroku
 
 # use settings on local
 # from settings import KEYS
 # use settings on local
 
+=======
+#from settings import KEYS
+>>>>>>> 3e6d0f09b0cfd5f69a1b1a4c9f9de599c81fa868
 from location import *
 import traceback
 
@@ -68,12 +72,12 @@ def getWeather():
 # get the city id
 def city_id():
 	try:
-		w_data = weather_data["id"]
+		print(weather_data["id"])
 	except Exception:
 		print('error getting the weather id ')
 		traceback.print_exc()
 		return
-	return w_data
+	return weather_data["id"]
 
 # getWeather()
 # city_id()
