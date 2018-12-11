@@ -13,7 +13,7 @@ from weather import *
 app = Flask('Weather Recommendation App')
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def display_location():
 	# uncommet try/except on heroku
     try:
