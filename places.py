@@ -358,6 +358,8 @@ def get_indoor_places(coordinates):
 
 	try:
 		for indoor_category in indoor_categories.keys():
+			print(coordinates)
+			print(get_nearby_places(coordinates, indoor_category, ''))
 			indoor_places.extend(get_nearby_places(coordinates, indoor_category, ''))
 			print(indoor_places)
 			# indoor_places.append(places_by_category)
