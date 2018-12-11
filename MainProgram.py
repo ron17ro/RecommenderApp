@@ -15,13 +15,13 @@ app = Flask('Weather Recommendation App')
 
 @app.route('/', methods=['POST', 'GET'])
 def display_location():
-	# uncommet try/except on heroku
+        # uncommet try/except on heroku
     try:
         data = getGeolocationByIp()
     except Exception:
         print('error getting the client ip ')
         traceback.print_exc()
-	# uncommet try/except on heroku
+        # uncommet try/except on heroku
 
     return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
 
@@ -33,10 +33,19 @@ def display_places_by_selected_type(place_type):
     # print()
     # print(place_type.title())
     # nearby_places = get_nearby_places(my_coordinates(), place_type, '')
-
-    nearby_places = get_nearby_places(my_coordinates(), place_type, '')
-    return render_template("places_by_category.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places=nearby_places,
-                           all_places_names=all_places_names, Google_API_KEY=KEYS['google_API'], cityId=city_id(), place_type=place_type.title(), selected_place_category=all_places_names[place_type])
+	try:
+		location=my_city()
+		OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap']
+		nearby_places = get_nearby_places(my_coordinates(), place_type, '')
+		Google_API_KEY = KEYS['google_API']
+		cityId=city_id()
+		place_type = place_type.title()
+		selected_place_category = all_places_names[place_type]
+	except Exception:
+		print('error reading a category of places')
+		traceback.print_exc()
+	return render_template("places_by_category.html", location = location , OpenWeatherMap_API_KEY = OpenWeatherMap_API_KEY, all_places=all_places,
+                           all_places_names =all_places_names, Google_API_KEY = Google_API_KEY, cityId =cityId, place_type =place_type, selected_place_category =selected_place_category)
 
 
 @app.route("/contact", methods=['POST', 'GET'])
