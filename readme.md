@@ -45,8 +45,8 @@ The application can be set to work on local if the following:
 Future Features/Improvements
 --------------
 
-**Futures Features**
-- Twitter feed displaying tweets based on the location and weather with the use of hashtags (for example, #Dublin and #rain)(curently the search by hashtag widget is discontinued. The REST Search API can be used to search timelines, however, a display interface has to be written from scratch accordin to this article: 
+**Future Features**
+- Twitter feed displaying tweets based on the location and weather with the use of hashtags (for example, #Dublin and #rain)(currently the search by hashtag widget is discontinued. The REST Search API can be used to search timelines, however, a display interface has to be written from scratch according to this article: 
 https://twittercommunity.com/t/deprecating-widget-settings/102295)
 - Extra places offerings not only based on the weather but on place categories the user is interested in, for example "clothing store" or "spa". This feature is partially implemented through the list of place categories displayed at the top.
 
