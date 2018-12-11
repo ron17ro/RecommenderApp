@@ -236,7 +236,7 @@ def get_nearby_places(coordinates, place_type, next_page):
 	try:
 
 		URL = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-				+ coordinates+'&radius=700&key='+api_key+'&type='+place_type)
+				+ coordinates+'&radius=500&key='+api_key+'&type='+place_type)
 		r = requests.get(URL)
 		response = r.text
 		python_object = json.loads(response)
@@ -342,13 +342,13 @@ def get_outdoor_places(coordinates):
 	outdoor_places = []
 	try:
 		for outdoor_category in outdoor_categories.keys():
-			print(outdoor_category)
+			# print(outdoor_category)
 			outdoor_places.extend(get_nearby_places(coordinates, outdoor_category, ''))
 			# outdoor_places.append(places_by_category)
 	except:
 		print("cannot get outdoor places")
 		return
-	print(outdoor_places)
+	# print(outdoor_places)
 	return outdoor_places
 
 # get indoor places based on coordinates
@@ -357,7 +357,7 @@ def get_indoor_places(coordinates):
 
 	try:
 		for indoor_category in indoor_categories.keys():
-			print(coordinates)
+			# print(coordinates)
 			# print(get_nearby_places(coordinates, indoor_category, ''))
 			indoor_places.extend(get_nearby_places(coordinates, indoor_category, ''))
 			# print(indoor_places)
