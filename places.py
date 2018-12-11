@@ -238,7 +238,7 @@ def get_nearby_places(coordinates, place_type, next_page):
 		URL = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
 				+ coordinates+'&radius=700&key='+api_key+'&type='+place_type+'&pagetoken='+next_page)
 		r = requests.get(URL)
-		
+		print(URL)
 		response = r.text
 		python_object = json.loads(response)
 		results = python_object['results']
