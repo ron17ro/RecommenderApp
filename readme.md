@@ -5,7 +5,8 @@ Purpose of the Weather Recommendation App
 --------------
 The purpose of this app is to provide the user with a list of recommended activities based on the current weather at their location.
 The user's location is determined by their IP browser.
-The app offers a list of activities within a 500-meter radius from the user's location.
+The app offers a list of activities within a 500-meter radius from the user's location from a list of categories specified in place.py, either from the dictionary outdoor_categories[] or
+in the dictionary indoor_categories[], depending on the current weather
 The app also offers the possibility for the user to choose from a range of categories and display the relevant categories within the radius (regardless of the weather).
 
 Technologies used
@@ -28,6 +29,9 @@ Technologies used
 **Deployement**
 The Weather Recommendation App is deployed on Heroku
 Config variables have been used to maintain the security of the API keys
+The application can be set to work on local if the following:
+	-in location.py use the code block inside "#use this to test on local"  and comment the block specified by "# # use this on heroku to get the IP on the client(remote addr), if used to run the app on local it will return 127.0.0.1"
+	-in location.py, MainProgram.py, weather.py, places.py, the import section uses the line specified by "# use settings.py on local" and should comment the line specified by "# use keys.py on heroku"
 
 Future Features/Improvements
 --------------
@@ -44,5 +48,6 @@ https://twittercommunity.com/t/deprecating-widget-settings/102295)
 - The Twitter feed described above would be placed on the right-hand side of the website
 - Use JQuery to retrieve places instead of Python
 
-
+**Limitation**
+- It doesn't work with clients using a VPN connections. The geolocation API returns an empty city .
 
