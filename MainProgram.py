@@ -44,7 +44,7 @@ def display_places_by_selected_type(place_type):
 		print('error reading a category of places')
 		traceback.print_exc()
 	return render_template("places_by_category.html", location = location , OpenWeatherMap_API_KEY = OpenWeatherMap_API_KEY, all_places=nearby_places,
-                           all_places_names =all_places_names, Google_API_KEY = Google_API_KEY, cityId =cityId, selected_place_category =all_places_names[place_type.title()])
+                           all_places_names =all_places_names, Google_API_KEY = Google_API_KEY, cityId =cityId, selected_place_category =all_places_names[place_type])
 
 
 @app.route("/contact", methods=['POST', 'GET'])

@@ -5,7 +5,7 @@ Purpose of the Weather Recommendation App
 --------------
 The purpose of this app is to provide the user with a list of recommended activities based on the current weather at their location.
 The user's location is determined by their IP browser.
-The app offers a list of activities within a 700-meter radius from the user's location.
+The app offers a list of activities within a 500-meter radius from the user's location.
 The app also offers the possibility for the user to choose from a range of categories and display the relevant categories within the radius (regardless of the weather).
 
 Technologies used
@@ -46,10 +46,3 @@ https://twittercommunity.com/t/deprecating-widget-settings/102295)
 
 
 
-<<<<<<< HEAD
-=======
-We faced some issues deploying the app to Heroku. While the app is up and running in Heroku, the functionality to display the recommended places does not work expected.
-This functionality works well on a local environment and after spending some time troubleshooting the issue, we assume it might be a limitation of the API keys.
-Due to time constraints, we chose to leave it as it on Heroku for the moment.
- 
->>>>>>> 3e6d0f09b0cfd5f69a1b1a4c9f9de599c81fa868
