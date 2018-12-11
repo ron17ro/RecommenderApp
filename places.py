@@ -3,13 +3,11 @@ import requests
 import json
 import time
 
-# use keys on heroku
+# use keys.py on heroku
 from keys import KEYS
-# use keys on heroku
-
-# use settings on local
+# use settings.py on local
 # from settings import KEYS
-# use settings on local
+
 from location import *
 
 api_key = KEYS['google_API']

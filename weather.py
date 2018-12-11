@@ -3,18 +3,10 @@ import pyowm  # importing the pyowm library
 from urllib.request import urlopen
 import json
 import time
-# use keys on heroku
+# use keys.py on heroku
 from keys import KEYS
-<<<<<<< HEAD
-# use keys on heroku
-
-# use settings on local
+# use settings.py on local
 # from settings import KEYS
-# use settings on local
-
-=======
-#from settings import KEYS
->>>>>>> 3e6d0f09b0cfd5f69a1b1a4c9f9de599c81fa868
 from location import *
 import traceback
 

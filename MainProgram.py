@@ -1,13 +1,10 @@
 from flask import Flask, render_template, request
 from location import *
 from places import *
-# use keys on heroku
+# use keys.py on heroku
 from keys import KEYS
-# use keys on heroku
-
-# use settings on local
+# use settings.py on local
 # from settings import KEYS
-# use settings on local
 from weather import *
 
 # from emailProgram import *
