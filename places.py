@@ -291,10 +291,11 @@ def get_place_image_address_website(place_id):
 		reqURL = ('https://maps.googleapis.com/maps/api/place/details/json?placeid='
 			+ place_id+'&key='+api_key)
 		r = requests.get(reqURL)
-	
+		
 
 		response = r.text
 		python_object = json.loads(response)
+		print(python_object)
 		# place_image = []
 		place_attr = []
 		
