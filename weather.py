@@ -3,8 +3,14 @@ import pyowm  # importing the pyowm library
 from urllib.request import urlopen
 import json
 import time
+# use keys on heroku
 from keys import KEYS
+# use keys on heroku
+
+# use settings on local
 # from settings import KEYS
+# use settings on local
+
 from location import *
 import traceback
 
@@ -70,3 +76,4 @@ def city_id():
 	return w_data
 
 # getWeather()
+# city_id()

@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request
 from location import *
 from places import *
-from keys import *
+# use keys on heroku
+from keys import KEYS
+# use keys on heroku
+
+# use settings on local
 # from settings import KEYS
+# use settings on local
 from weather import *
 
 # from emailProgram import *
@@ -19,7 +24,7 @@ def display_location():
     except Exception:
         print('error getting the client ip ')
         traceback.print_exc()
-
+	# uncommet try/except on heroku
 
     return render_template("IOCategories.html", location=my_city(), OpenWeatherMap_API_KEY=KEYS['OpenWeatherMap'], all_places_names=all_places_names, cityId=city_id())
 

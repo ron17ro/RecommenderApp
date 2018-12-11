@@ -3,7 +3,7 @@ Weather Recommendation App
 
 Purpose of the Weather Recommendation App
 --------------
-The purpose of this app is to provide the user with a list of recommended activities based on the current at their location.
+The purpose of this app is to provide the user with a list of recommended activities based on the current weather at their location.
 The user's location is determined by their IP browser.
 The app offers a list of activities within a 700-meter radius from the user's location.
 The app also offers the possibility for the user to choose from a range of categories and display the relevant categories within the radius (regardless of the weather).
@@ -33,7 +33,8 @@ Future Features/Improvements
 --------------
 
 **Futures Features**
-- Twitter feed displaying tweets based on the location and weather with the use of hashtags (for example, #Dublin and #rain)
+- Twitter feed displaying tweets based on the location and weather with the use of hashtags (for example, #Dublin and #rain)(curently the search by hashtag widget is discontinued. The REST Search API can be used to search timelines, however, a display interface has to be written from scratch accordin to this article: 
+https://twittercommunity.com/t/deprecating-widget-settings/102295)
 - Extra places offerings not only based on the weather but on place categories the user is interested in, for example "clothing store" or "spa". This feature is partially implemented through the list of place categories displayed at the top.
 
 
@@ -41,9 +42,7 @@ Future Features/Improvements
 - Create a "mega-menu" for the list of place categories (currently place in the jumbotron)
 - General layout work 
 - The Twitter feed described above would be placed on the right-hand side of the website
+- Use JQuery to retrieve places instead of Python
 
-Current issues
---------------
 
-Due to Heroku's server location (US), the IP address found is located in the US (server's location) which is causing issues on the deployed app.
-To make the deployment successful, the location was hardcoded.
+

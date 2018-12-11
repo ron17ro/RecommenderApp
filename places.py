@@ -2,8 +2,14 @@
 import requests
 import json
 import time
+
+# use keys on heroku
 from keys import KEYS
+# use keys on heroku
+
+# use settings on local
 # from settings import KEYS
+# use settings on local
 from location import *
 
 api_key = KEYS['google_API']
@@ -335,7 +341,7 @@ def get_place_image_address_website(place_id):
 	except:
 		print("err getting place details")
 		return
-
+# get outdoor places based on coordinates
 def get_outdoor_places(coordinates):
 	outdoor_places = []
 	try:
@@ -348,6 +354,7 @@ def get_outdoor_places(coordinates):
 	print(outdoor_places)
 	return outdoor_places
 
+# get indoor places based on coordinates
 def get_indoor_places(coordinates):
 	indoor_places = []
 

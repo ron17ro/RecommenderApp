@@ -6,7 +6,7 @@ import traceback
 from flask import request
 import time
 
-# to test on local
+#use this to test on local
 
 # try:
 #     url = 'http://ipinfo.io/json'
@@ -44,36 +44,34 @@ import time
 #     print('Your IP detail\n ')
 #     print('IP : {4} \nRegion : {1} \nCountry : {2} \nCity : {3} \nOrg : {0}'.format(
 #         org, region, country, city, IP))
-
-
-
+#use this to test on local
 
 # # use this on heroku to get the IP on the client(remote addr), if used to run the app on local it will return 127.0.0.1
 def get_remote_addr():
-    address = request.headers.get('X-Forwarded-For', request.remote_addr)
-    if address is not None:
+	address = request.headers.get('X-Forwarded-For', request.remote_addr)
+	if address is not None:
         # An 'X-Forwarded-For' header includes a comma separated list of the
         # addresses, the first address being the actual remote address.
-        address = address.encode('utf-8').split(b',')[0].strip()
-        ip = str(address)
-        print(ip[1:])
-    return ip[1:]
+		address = address.encode('utf-8').split(b',')[0].strip()
+		ip = str(address)
+		print(ip[1:])
+	return ip[1:]
 
 
 def getGeolocationByIp():
-    try:
-        ip = get_remote_addr()
-        url = 'http://ipinfo.io/' + str(ip).strip("'") + '/geo'
-        print(url)
-        response = urlopen(url)
+	try:
+		ip = get_remote_addr()
+		url = 'http://ipinfo.io/' + str(ip).strip("'") + '/geo'
+		print(url)
+		response = urlopen(url)
         # time.sleep(1000)
-        data = json.load(response)
-        print('data' + str(data))
-    except Exception:
-        print('could not get the ip')
-        traceback.print_exc()
-        return
-    return data
+		data = json.load(response)
+		print('data' + str(data))
+	except Exception:
+		print('could not get the ip')
+		traceback.print_exc()
+		return
+	return data
 
 
 def my_city():
@@ -87,3 +85,4 @@ def my_coordinates():
 	print('Your coordinates: {0}'.format(data['loc']))
 	return data['loc']
 
+# # use this on heroku to get the IP on the client(remote addr), if used to run the app on local it will return 127.0.0.1
