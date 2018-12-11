@@ -45,15 +45,15 @@ def getWeather():
 		status = w.get_status()
 
 	# lists of weather conditions for sunny and rainy
-	sunny = ["Clear", "Clouds", "broken clouds"]
+	sunny = ["Clear", "Clouds", "Broken clouds"]
 	rainy = ["Thunderstorm", "Drizzle", "Rain", "Snow"]
 
 	if status in sunny:
-		print("Weather looks good. Let's do something outdoor")
+		print("Weather looks good. Let's do something outside")
 		return 'outdoor'
 
 	elif status in rainy:
-		print("It doesn't look so nice outside. Let's stay indoor today!")
+		print("It doesn't look so nice outside. Let's stay inside today!")
 		return 'indoor'
 
 	else:
