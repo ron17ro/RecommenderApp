@@ -19,7 +19,7 @@ def display_location():
     try:
         data = getGeolocationByIp()
     except Exception:
-        print('error getting the client ip ')
+        print('error getting the remote ip ')
         traceback.print_exc()
         # uncommet try/except on heroku
 
@@ -54,7 +54,7 @@ def contact():
         name = form_data["name"]
         receiver_address = form_data["email"]
         message = form_data["message"]
-        requests.post("https://api.mailgun.net/v3/sandbox92fcbfc429d24161a806e60bc92f3306.mailgun.org/messages",
+        requests.post("https://api.mailgun.net/v3/sandboxa062bbcd3ac34018a2edd4420b74f6b5.mailgun.org/messages",
                       auth=("api", KEYS['mailGun']), data={"from": "My Weather App <weatherapp@gmail.com>",
                                                            "to": KEYS['CommentEmail'],
                                                            "subject": "New Comment on Weather App",
