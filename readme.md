@@ -4,7 +4,7 @@ Weather Recommendation App
 Purpose of the Weather Recommendation App
 --------------
 The purpose of this app is to provide the user with a list of recommended activities based on the current weather at their location.
-The user's location is determined by their IP browser.
+The user's location is determined using the browser's IP address and does not represent the exact location of the visitor, but it will be located in the immediate vicinity. 
 The app offers a list of activities within a 500-meter radius from the user's location from a list of categories specified in place.py, either from the dictionary outdoor_categories[] or
 in the dictionary indoor_categories[], depending on the current weather
 The app also offers the possibility for the user to choose from a range of categories and display the relevant categories within the radius (regardless of the weather).
